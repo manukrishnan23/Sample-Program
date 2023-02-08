@@ -1,0 +1,28 @@
+# Program for Slot Machine
+import random
+
+def spin_reels():
+    reel1 = random.choice(["chocolate", "icecream", "pizza", "burger", "biriyani"])
+    reel2 = random.choice(["chocolate", "icecream", "pizza", "burger", "biriyani"])
+    reel3 = random.choice(["chocolate", "icecream", "pizza", "burger", "biriyani"])
+    return reel1, reel2, reel3
+
+def check_win(reel1, reel2, reel3):
+    if reel1 == reel2 == reel3:
+        return "Jackpot!"
+    elif reel1 == reel2 or reel2 == reel3 or reel1 == reel3:
+        return "Win!"
+    else:
+        return "Try again."
+
+while True:
+    play = input("Would you like to play the slot machine? (yes/no) ")
+    if play == "yes":
+        reel1, reel2, reel3 = spin_reels()
+        result = check_win(reel1, reel2, reel3)
+        print("{} - {} - {}".format(reel1, reel2, reel3))
+        print(result)
+    elif play == "no":
+        break
+    else:
+        print("Invalid input. Please enter 'yes' or 'no'.")
